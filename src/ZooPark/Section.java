@@ -47,9 +47,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "ZooPark.ZooPark.Section{" +
-                "tipoDiSezione=" + tipoDiSezione +
-                '}';
+        return String.valueOf(tipoDiSezione);
     }
 }
 

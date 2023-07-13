@@ -28,24 +28,30 @@ import java.time.LocalDateTime;
  */
 public class Main {
     public static void main(String[] args) throws SectionNotAvailableException {
-        ZooPark zoo1 = new ZooPark("zoo1",LocalDateTime.of(2000,7,13,7,0),LocalDateTime.of(2025,7,13,18,0),10);
-        Section standard = new Section(TypeOfSection.STANDARD, LocalDateTime.of(2000,7,13,7,0),LocalDateTime.of(2025,7,13,18,0));
-        Section volatili = new Section(TypeOfSection.VOLATILI, LocalDateTime.of(2000,7,13,7,0),LocalDateTime.of(2025,7,13,18,0));
-        Section acquatici = new Section(TypeOfSection.AQUATICI, LocalDateTime.of(2000,7,13,7,0),LocalDateTime.of(2025,7,13,18,0));
+        ZooPark zoo1 = new ZooPark("zoo1", LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0), 10);
+        Section standard = new Section(TypeOfSection.STANDARD, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
+        Section volatili = new Section(TypeOfSection.VOLATILI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
+        Section acquatici = new Section(TypeOfSection.AQUATICI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
         zoo1.aggiungiSezione(standard);
         zoo1.aggiungiSezione(volatili);
         zoo1.aggiungiSezione(acquatici);
-        Animals scimmia = new Animals("Scimmia",10, TypeOfSection.STANDARD);
-        Animals aquila = new Animals("Aquila",15, TypeOfSection.VOLATILI);
-        zoo1.selezionaSezione(standard).aggiungiAnimale(scimmia);
-        zoo1.selezionaSezione(standard).aggiungiAnimale(aquila);
-        zoo1.selezionaSezione(standard).aggiungiAnimale(new Animals("Coccodrillo",50, TypeOfSection.AQUATICI));
-        zoo1.selezionaSezione(standard).aggiungiAnimale(new Animals("Rinoceronte",100, TypeOfSection.STANDARD));
+        Animals scimmia = new Animals("Scimmia", 10, TypeOfSection.STANDARD);
+        Animals aquila = new Animals("Aquila", 15, TypeOfSection.VOLATILI);
+        Animals coccodrillo = new Animals("Coccodrillo", 50, TypeOfSection.AQUATICI);
+        Animals rinoceronte = new Animals("Rinoceronte", 100, TypeOfSection.STANDARD);
+        try {
+            zoo1.selezionaSezione(standard).aggiungiAnimale(scimmia);
+            zoo1.selezionaSezione(standard).aggiungiAnimale(aquila);
+            zoo1.selezionaSezione(acquatici).aggiungiAnimale(coccodrillo);
+            zoo1.selezionaSezione(volatili).aggiungiAnimale(rinoceronte);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         User user = new User();
         System.out.println(user.cercaAnimale(scimmia));
-        user.printAnimalInAZooParkForSection(zoo1,standard);
+        user.printAnimalInAZooParkForSection(zoo1, standard);
         System.out.println(user.isThatZooOpen(zoo1));
-        System.out.println(user.findAnimalInZooPark(zoo1,aquila));
+        System.out.println(user.findAnimalInZooPark(zoo1, aquila));
         user.printAnimalInAZooPark(zoo1);
     }
 }
