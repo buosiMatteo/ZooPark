@@ -1,3 +1,5 @@
+package ZooPark;
+
 public enum TypeOfSection {
     STANDARD("Standard"),
     AQUATICI("Acquatici"),

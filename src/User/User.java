@@ -1,3 +1,9 @@
+package User;
+
+import ZooPark.*;
+import Exception.*;
+
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +17,7 @@ public class User implements UserOperation {
                 if (z.cercaAnimale(animal)) {
                     zooParkList.add(z);
                 }
-            } catch (AnimalsNotInTheZooExeption e) {
+            } catch (AnimalsNotInTheZooException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -28,7 +34,7 @@ public class User implements UserOperation {
     public boolean findAnimalInZooPark(ZooPark zooPark, Animals animal) {
         try {
             return zooPark.cercaAnimale(animal);
-        } catch (AnimalsNotInTheZooExeption e) {
+        } catch (AnimalsNotInTheZooException e) {
             System.out.println(e.getMessage());
             return false;
         }
@@ -51,7 +57,7 @@ public class User implements UserOperation {
             for (Animals a : zooPark.selezionaSezione(section).getAnimalsSet()) {
                 System.out.println(a.toString());
             }
-        } catch (SectionNotAvailableExeption e) {
+        } catch (SectionNotAvailableException e) {
             System.out.println(e.getMessage());
         }
     }

@@ -1,3 +1,7 @@
+package ZooPark;
+
+import Exception.*;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -46,19 +50,19 @@ public class ZooPark {
         return sezioni;
     }
 
-    public Section selezionaSezione(Section section) throws SectionNotAvailableExeption {
+    public Section selezionaSezione(Section section) throws SectionNotAvailableException {
         for (Section s : this.getSezioni()) {
             if (s.equals(section)) {
                 return s;
             } else {
-                throw new SectionNotAvailableExeption();
+                throw new SectionNotAvailableException();
             }
 
         }
-        throw new SectionNotAvailableExeption();
+        throw new SectionNotAvailableException();
     }
 
-    public boolean cercaAnimale(Animals animals) throws AnimalsNotInTheZooExeption {
+    public boolean cercaAnimale(Animals animals) throws AnimalsNotInTheZooException {
         for (Section s : sezioni) {
             for (Animals a : s.getAnimalsSet()) {
                 if (a.equals(animals)) {
@@ -66,7 +70,7 @@ public class ZooPark {
                 }
             }
         }
-        throw new AnimalsNotInTheZooExeption();
+        throw new AnimalsNotInTheZooException();
     }
 
     @Override

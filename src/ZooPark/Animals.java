@@ -1,3 +1,5 @@
+package ZooPark;
+
 public class Animals {
 
     private final String nome;

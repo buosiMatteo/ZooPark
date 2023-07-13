@@ -1,3 +1,5 @@
+package ZooPark;
+
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -45,7 +47,7 @@ public class Section {
 
     @Override
     public String toString() {
-        return "Section{" +
+        return "ZooPark.ZooPark.Section{" +
                 "tipoDiSezione=" + tipoDiSezione +
                 '}';
     }

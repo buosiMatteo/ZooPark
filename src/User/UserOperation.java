@@ -1,3 +1,8 @@
+package User;
+
+import ZooPark.Animals;
+import ZooPark.*;
+
 import java.util.List;
 
 public interface UserOperation {
