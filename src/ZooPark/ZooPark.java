@@ -22,8 +22,9 @@ public class ZooPark {
         ZooParkDB.zooParkList.add(this);
     }
 
-    public void aggiungiSezione(Section section) {
+    public Section aggiungiSezione(Section section) {
         this.sezioni.add(section);
+        return section;
     }
 
     public String getNome() {
@@ -51,7 +52,7 @@ public class ZooPark {
     }
 
     public Section selezionaSezione(Section section) throws SectionNotAvailableException {
-        for (Section s : this.getSezioni()) {
+        for (Section s : getSezioni()) {
             if (s.equals(section)) {
                 return s;
             } else {

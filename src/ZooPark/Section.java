@@ -49,5 +49,13 @@ public class Section {
     public String toString() {
         return String.valueOf(tipoDiSezione);
     }
+
+    public boolean equals(Section s){
+        if (this.tipoDiSezione==s.tipoDiSezione){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 

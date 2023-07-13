@@ -30,23 +30,19 @@ public class Main {
     public static void main(String[] args) throws SectionNotAvailableException {
         ZooPark zoo1 = new ZooPark("zoo1", LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0), 10);
         Section standard = new Section(TypeOfSection.STANDARD, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
-        Section volatili = new Section(TypeOfSection.VOLATILI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
-        Section acquatici = new Section(TypeOfSection.AQUATICI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
+        Section winged = new Section(TypeOfSection.VOLATILI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
+        Section acquatic = new Section(TypeOfSection.AQUATICI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
         zoo1.aggiungiSezione(standard);
-        zoo1.aggiungiSezione(volatili);
-        zoo1.aggiungiSezione(acquatici);
+        zoo1.aggiungiSezione(winged);
+        zoo1.aggiungiSezione(acquatic);
         Animals scimmia = new Animals("Scimmia", 10, TypeOfSection.STANDARD);
         Animals aquila = new Animals("Aquila", 15, TypeOfSection.VOLATILI);
         Animals coccodrillo = new Animals("Coccodrillo", 50, TypeOfSection.AQUATICI);
         Animals rinoceronte = new Animals("Rinoceronte", 100, TypeOfSection.STANDARD);
-        try {
-            zoo1.selezionaSezione(standard).aggiungiAnimale(scimmia);
-            zoo1.selezionaSezione(standard).aggiungiAnimale(aquila);
-            zoo1.selezionaSezione(acquatici).aggiungiAnimale(coccodrillo);
-            zoo1.selezionaSezione(volatili).aggiungiAnimale(rinoceronte);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        zoo1.aggiungiSezione(standard).aggiungiAnimale(scimmia);
+        zoo1.aggiungiSezione(winged).aggiungiAnimale(aquila);
+        zoo1.aggiungiSezione(acquatic).aggiungiAnimale(coccodrillo);
+        zoo1.aggiungiSezione(standard).aggiungiAnimale(rinoceronte);
         User user = new User();
         System.out.println(user.cercaAnimale(scimmia));
         user.printAnimalInAZooParkForSection(zoo1, standard);
