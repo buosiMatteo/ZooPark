@@ -1,5 +1,6 @@
 import User.User;
 import ZooPark.*;
+import Exception.*;
 
 import java.time.LocalTime;
 
@@ -36,11 +37,20 @@ public class Main {
         Animals aquila = new Animals("Aquila", 15, TypeOfSection.WINGED);
         Animals coccodrillo = new Animals("Coccodrillo", 50, TypeOfSection.ACQUATIC);
         Animals rinoceronte = new Animals("Rinoceronte", 100, TypeOfSection.STANDARD);
-        zoo1.aggiungiSezione(standard).aggiungiAnimale(scimmia);
-        zoo1.aggiungiSezione(winged).aggiungiAnimale(aquila);
-        zoo1.aggiungiSezione(acquatic).aggiungiAnimale(coccodrillo);
-        zoo1.aggiungiSezione(standard).aggiungiAnimale(rinoceronte);
-        zoo2.aggiungiSezione(standard).aggiungiAnimale(scimmia);
+        try{
+            zoo1.aggiungiSezione(standard).aggiungiAnimale(scimmia);
+            zoo1.aggiungiSezione(winged).aggiungiAnimale(aquila);
+            zoo1.aggiungiSezione(acquatic).aggiungiAnimale(coccodrillo);
+            zoo1.aggiungiSezione(standard).aggiungiAnimale(rinoceronte);
+            zoo2.aggiungiSezione(standard).aggiungiAnimale(scimmia);
+        }catch (AnimalNotBelongsToSectionException e){
+            System.out.println(e.getMessage());
+        }
+        try {
+            zoo1.aggiungiSezione(winged).aggiungiAnimale(scimmia);          //throws exception
+        } catch (AnimalNotBelongsToSectionException e){
+            System.out.println(e.getMessage());
+        }
         User user = new User();
         System.out.printf("The animal\n %s\n is located in \n %s",scimmia,user.cercaAnimale(scimmia).toString());                                 // task 1
         user.printAnimalInAZooParkForSection(zoo1, standard);                           // task 6

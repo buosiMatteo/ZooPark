@@ -1,11 +1,10 @@
 package ZooPark;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import static java.lang.String.valueOf;
+import Exception.*;
 
 public class Section {
     private TypeOfSection tipoDiSezione;
@@ -20,8 +19,10 @@ public class Section {
         this.animalsSet = new HashSet<>();
     }
 
-    public void aggiungiAnimale(Animals animale) {
-        animalsSet.add(animale);
+    public void aggiungiAnimale(Animals animale) throws AnimalNotBelongsToSectionException{
+      if (animale.getSezioneDiApparteneza()==tipoDiSezione){
+          animalsSet.add(animale);
+      } else throw new AnimalNotBelongsToSectionException();
     }
 
     public Set<Animals> getAnimalsSet() {
