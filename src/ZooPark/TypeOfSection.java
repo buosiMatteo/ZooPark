@@ -2,8 +2,8 @@ package ZooPark;
 
 public enum TypeOfSection {
     STANDARD("Standard"),
-    AQUATICI("Acquatici"),
-    VOLATILI("Volatili");
+    ACQUATIC("Aquatic"),
+    WINGED("Winged");
 
     private final String nome;
 

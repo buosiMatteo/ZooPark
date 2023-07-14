@@ -1,8 +1,7 @@
 import User.User;
 import ZooPark.*;
-import Exception.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /*
     Creare un programma Java che possa gestire una serie di giardini zoologici
@@ -27,15 +26,15 @@ import java.time.LocalDateTime;
     6)	Stampare lista degli animali presenti in un certo zoo per un certo sezione/spazio richiesto
  */
 public class Main {
-    public static void main(String[] args) throws SectionNotAvailableException {
-        ZooPark zoo1 = new ZooPark("zoo1", LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0), 10);
-        ZooPark zoo2 = new ZooPark("zoo2", LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0), 20);
-        Section standard = new Section(TypeOfSection.STANDARD, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
-        Section winged = new Section(TypeOfSection.VOLATILI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
-        Section acquatic = new Section(TypeOfSection.AQUATICI, LocalDateTime.of(2000, 7, 13, 7, 0), LocalDateTime.of(2025, 7, 13, 18, 0));
+    public static void main(String[] args) {
+        ZooPark zoo1 = new ZooPark("zoo1", LocalTime.of(7,30,0), LocalTime.of( 18, 0,0), 10);
+        ZooPark zoo2 = new ZooPark("zoo2", LocalTime.of( 7, 0,0), LocalTime.of( 19, 0,0), 20);
+        Section standard = new Section(TypeOfSection.STANDARD, LocalTime.of(7, 30, 0), LocalTime.of( 12, 30,0));
+        Section winged = new Section(TypeOfSection.WINGED, LocalTime.of(10, 30, 0), LocalTime.of( 18, 30,0));
+        Section acquatic = new Section(TypeOfSection.ACQUATIC, LocalTime.of(7, 30, 0), LocalTime.of( 18, 30,0));
         Animals scimmia = new Animals("Scimmia", 10, TypeOfSection.STANDARD);
-        Animals aquila = new Animals("Aquila", 15, TypeOfSection.VOLATILI);
-        Animals coccodrillo = new Animals("Coccodrillo", 50, TypeOfSection.AQUATICI);
+        Animals aquila = new Animals("Aquila", 15, TypeOfSection.WINGED);
+        Animals coccodrillo = new Animals("Coccodrillo", 50, TypeOfSection.ACQUATIC);
         Animals rinoceronte = new Animals("Rinoceronte", 100, TypeOfSection.STANDARD);
         zoo1.aggiungiSezione(standard).aggiungiAnimale(scimmia);
         zoo1.aggiungiSezione(winged).aggiungiAnimale(aquila);
@@ -43,12 +42,12 @@ public class Main {
         zoo1.aggiungiSezione(standard).aggiungiAnimale(rinoceronte);
         zoo2.aggiungiSezione(standard).aggiungiAnimale(scimmia);
         User user = new User();
-        System.out.println(user.cercaAnimale(scimmia));                                 // task 1
+        System.out.printf("The animal\n %s\n is located in \n %s",scimmia,user.cercaAnimale(scimmia).toString());                                 // task 1
         user.printAnimalInAZooParkForSection(zoo1, standard);                           // task 6
-        System.out.println(user.isThatZooOpen(zoo1));                                   // task 2
-        System.out.println(user.findAnimalInZooPark(zoo1, aquila));                     // task 3
+        user.isThatZooOpen(zoo1);                                                       // task 2
+        user.findAnimalInZooPark(zoo1, aquila);                                         // task 3
         user.printAnimalInAZooPark(zoo1);                                               // task 5
-        System.out.println(user.visitAnimalInASection(zoo2, standard, scimmia));        // task 4
+        user.visitAnimalInASection(zoo2, standard, scimmia);                            // task 4
         user.findAnimalInZooPark(zoo2,aquila);                                          // task 3 with exception
     }
 }

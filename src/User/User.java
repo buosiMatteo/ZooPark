@@ -5,6 +5,7 @@ import Exception.*;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,13 +27,20 @@ public class User implements UserOperation {
 
     @Override
     public boolean isThatZooOpen(ZooPark zooPark) {
-        LocalDateTime now = LocalDateTime.now();
-        return !now.isBefore(zooPark.getOrarioDiApertura()) && !now.isAfter(zooPark.getOrarioDiChiusura());
+        LocalTime now = LocalTime.now();
+        if (!now.isBefore(zooPark.getOrarioDiApertura()) && !now.isAfter(zooPark.getOrarioDiChiusura())) {
+            System.out.printf("%s is open now\n", zooPark);
+            return true;
+        } else {
+            System.out.printf("%s is closed now\n",zooPark);
+            return false;
+        }
     }
 
     @Override
     public boolean findAnimalInZooPark(ZooPark zooPark, Animals animal) {
         try {
+            System.out.println("This animal is present in that zoo");
             return zooPark.cercaAnimale(animal);
         } catch (AnimalsNotInTheZooException e) {
             System.out.println(e.getMessage());
@@ -46,6 +54,7 @@ public class User implements UserOperation {
         for (Section s : zooPark.getSezioni()) {
             for (Animals a : s.getAnimalsSet()) {
                 if (a.equals(animal)) {
+                    System.out.println("You can see this animal in that section of this zoo");
                     return true;
                 }
             }
@@ -67,6 +76,7 @@ public class User implements UserOperation {
     @Override
     public void printAnimalInAZooParkForSection(ZooPark zooPark, Section section) {
         try {
+            System.out.println("\n\nIn this section of this zoo you can see these animals:");
             for (Animals a : zooPark.selezionaSezione(section).getAnimalsSet()) {
                 System.out.println(a.toString());
             }

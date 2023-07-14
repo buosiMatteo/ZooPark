@@ -1,6 +1,7 @@
 package ZooPark;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -8,11 +9,11 @@ import static java.lang.String.valueOf;
 
 public class Section {
     private TypeOfSection tipoDiSezione;
-    private LocalDateTime orarioDiApertura;
-    private LocalDateTime orarioDiChiusura;
+    private LocalTime orarioDiApertura;
+    private LocalTime orarioDiChiusura;
     private final Set<Animals> animalsSet;
 
-    public Section(TypeOfSection tipoDiSezione, LocalDateTime orarioDiApertura, LocalDateTime orarioDiChiusura) {
+    public Section(TypeOfSection tipoDiSezione, LocalTime orarioDiApertura, LocalTime orarioDiChiusura) {
         this.tipoDiSezione = tipoDiSezione;
         this.orarioDiApertura = orarioDiApertura;
         this.orarioDiChiusura = orarioDiChiusura;
@@ -37,11 +38,11 @@ public class Section {
         return tipoDiSezione;
     }
 
-    public LocalDateTime getOrarioDiApertura() {
+    public LocalTime getOrarioDiApertura() {
         return orarioDiApertura;
     }
 
-    public LocalDateTime getOrarioDiChiusura() {
+    public LocalTime getOrarioDiChiusura() {
         return orarioDiChiusura;
     }
 

@@ -2,18 +2,18 @@ package ZooPark;
 
 import Exception.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
 public class ZooPark {
     private String nome;
-    private final LocalDateTime orarioDiApertura;
-    private final LocalDateTime orarioDiChiusura;
+    private final LocalTime orarioDiApertura;
+    private final LocalTime orarioDiChiusura;
     private final int animaliMassimi;
     private final Set<Section> sezioni;
 
-    public ZooPark(String nome, LocalDateTime orarioDiApertura, LocalDateTime orarioDiChiusura, int animaliMassimi) {
+    public ZooPark(String nome, LocalTime orarioDiApertura, LocalTime orarioDiChiusura, int animaliMassimi) {
         this.nome = nome;
         this.orarioDiApertura = orarioDiApertura;
         this.orarioDiChiusura = orarioDiChiusura;
@@ -35,7 +35,7 @@ public class ZooPark {
         this.nome = nome;
     }
 
-    public LocalDateTime getOrarioDiApertura() {
+    public LocalTime getOrarioDiApertura() {
         return orarioDiApertura;
     }
 
@@ -43,7 +43,7 @@ public class ZooPark {
         return animaliMassimi;
     }
 
-    public LocalDateTime getOrarioDiChiusura() {
+    public LocalTime getOrarioDiChiusura() {
         return orarioDiChiusura;
     }
 
@@ -76,6 +76,8 @@ public class ZooPark {
 
     @Override
     public String toString() {
-        return String.format("Lo Zoo si chiama %s ha al massimo %s animali e ha queste sezioni %s", getNome(), getAnimaliMassimi(), sezioni);
+        return String.format("The %s \n" +
+                "with these section %s \n" +
+                "and maximum capacity of %s\n", getNome(), sezioni, getAnimaliMassimi());
     }
 }
