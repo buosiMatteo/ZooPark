@@ -12,6 +12,8 @@ public interface UserOperation {
 
     boolean findAnimalInZooPark(ZooPark zooPark, Animals animal);
 
+    boolean visitAnimalInASection(ZooPark zooPark, Section section, Animals animal);
+
     void printAnimalInAZooPark(ZooPark zooPark);
 
     void printAnimalInAZooParkForSection(ZooPark zooPark, Section section);

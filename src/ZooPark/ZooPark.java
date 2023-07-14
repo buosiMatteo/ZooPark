@@ -76,6 +76,6 @@ public class ZooPark {
 
     @Override
     public String toString() {
-        return String.format("Lo Zoo si chiama %s ha al massimo %s animali e ha queste sezioni %s", getNome(), getAnimaliMassimi(),sezioni);
+        return String.format("Lo Zoo si chiama %s ha al massimo %s animali e ha queste sezioni %s", getNome(), getAnimaliMassimi(), sezioni);
     }
 }

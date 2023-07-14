@@ -42,6 +42,19 @@ public class User implements UserOperation {
     }
 
     @Override
+    public boolean visitAnimalInASection(ZooPark zooPark, Section section, Animals animal) {
+        for (Section s : zooPark.getSezioni()) {
+            for (Animals a : s.getAnimalsSet()) {
+                if (a.equals(animal)) {
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
+
+    @Override
     public void printAnimalInAZooPark(ZooPark zooPark) {
         for (Section s : zooPark.getSezioni()) {
             for (Animals a : s.getAnimalsSet()) {
